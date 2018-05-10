@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-class Bookshelf extends Component {
+class Bookshelves extends Component {
 
   // static propTypes = {}
 
@@ -57,6 +57,7 @@ class Bookshelf extends Component {
                 </ol>
               </div>
             </div>
+
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
@@ -175,4 +176,4 @@ class Bookshelf extends Component {
 
 }
 
-export default Bookshelf;
+export default Bookshelves;
