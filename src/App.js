@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount(){
-    BooksAPI.getAll().then((books) => {
+    BooksAPI.getAll().then((books) => { //getting book list from server
       this.setState({ books:books })
     })
   }
@@ -30,7 +30,7 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-        <Route path="/search" render={() => (
+        <Route path="/search" listOfBooks={this.state.books} render={() => (
           <SearchBook />
         )}/>
 
