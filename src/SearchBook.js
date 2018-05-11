@@ -1,30 +1,65 @@
 import React,  {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
+import escapeRegExp from 'escape-string-regexp'
+import * as BooksAPI from './BooksAPI'
+// import sortBy from 'sort-by'
 
 class SearchBook extends Component {
   static propTypes = {
-    listOfBooks: PropTypes.array.isRequired,
+    listOfBooksOnShelves: PropTypes.array.isRequired,
   }
 
-
   state = {
-    searchQuery: ''
+    searchQuery: '',
+    booksDisplayed: [],
   }
 
   //as the user types, the output is updated
   updateSearchQuery = (entryValue) => {
-    this.setState({ searchQuery: entryValue.trim() })
+    this.setState({ searchQuery: entryValue })
+    this.searchBook(entryValue)
   }
 
-  
+  searchBook = (bookName) => {
+    BooksAPI.search(bookName)
+      .then( (book) => {
+        console.log('BOOK', book)
+        console.log('bookName', bookName)
+        if(typeof book === 'undefined' || book.error){
+          throw 'Undefined or Error'
+        }
+
+        this.setState({ booksDisplayed: book })
+        // if(book.error || book.length === 0 ){
+        //   this.setState( { booksDisplayed: [] })
+        // }
+
+      })
+      .catch( (e) => {
+        console.log(e);
+        console.log("Saida", this.state.booksDisplayed);
+        this.setState( { booksDisplayed: [] })
+      });
+  };
+
+
 
   render() {
     console.log('Props', this.props)
 
     //destructing
-    const {searchQuery} = this.state;
-    const {listOfBooks} = this.props;
+    const {searchQuery, booksDisplayed} = this.state;
+    const {listOfBooksOnShelves} = this.props;
+
+    //filtering the list of books
+    // let filteredList;
+    // if(searchQuery){
+    //   const match = new RegExp(escapeRegExp(searchQuery),'i')
+    //   filteredList = listOfBooksOnShelves.filter((book) => match.test(book.title))
+    // }
+    // console.log('filteredList', filteredList)
+    console.log('booksDisplayed', booksDisplayed)
 
 
 
@@ -47,6 +82,7 @@ class SearchBook extends Component {
               placeholder="Search by title or author"
               value={searchQuery}
               onChange={(event) => this.updateSearchQuery(event.target.value)}
+
             />
 
           </div>
@@ -56,6 +92,30 @@ class SearchBook extends Component {
 
             {searchQuery}
           </ol>
+
+          <ol className="books-grid">
+            {booksDisplayed.map( (b) => (
+              <li key={ b.id }>
+                <div className="book">
+                  <div className="book-top">
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${b.imageLinks.thumbnail})` }}></div>
+                    <div className="book-shelf-changer">
+                      <select>
+                        <option value="none" disabled>Move to...</option>
+                        <option value="currentlyReading">Currently Reading</option>
+                        <option value="wantToRead">Want to Read</option>
+                        <option value="read">Read</option>
+                        <option value="none">None</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="book-title"> { b.title } </div>
+                  <div className="book-authors"> { b.authors || 'No Author'} </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+
         </div>
       </div>
 
