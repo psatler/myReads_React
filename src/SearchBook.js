@@ -8,7 +8,8 @@ import Book from './Book'
 
 class SearchBook extends Component {
   static propTypes = {
-    listOfBooksOnShelves: PropTypes.array.isRequired,
+    // listOfBooksOnShelves: PropTypes.array.isRequired,
+    booksOnShelvesFunc: PropTypes.func.isRequired,
   }
 
   state = {
@@ -17,9 +18,9 @@ class SearchBook extends Component {
   }
 
   //as the user types, the output is updated
-  updateSearchQuery = (entryValue) => {
-    this.setState({ searchQuery: entryValue })
-    this.searchBook(entryValue)
+  updateSearchQuery = (query) => {
+    this.setState({ searchQuery: query })
+    this.searchBook(query)
   }
 
   searchBook = (bookName) => {
@@ -32,6 +33,7 @@ class SearchBook extends Component {
         }
 
         this.setState({ booksDisplayed: book })
+        // this.props.booksOnShelvesFunc();
         // if(book.error || book.length === 0 ){
         //   this.setState( { booksDisplayed: [] })
         // }
@@ -47,7 +49,7 @@ class SearchBook extends Component {
 
 
   render() {
-    console.log('Props', this.props)
+    // console.log('Props', this.props)
 
     //destructing
     const {searchQuery, booksDisplayed} = this.state;
@@ -68,7 +70,6 @@ class SearchBook extends Component {
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to="/">Close</Link>
-          {/* <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a> */}
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -89,10 +90,8 @@ class SearchBook extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {searchQuery}
-            
             {booksDisplayed.map( (b) => (
-              <Book key={b.id} aBook={b} />
+              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
             ))}
           </ol>
         </div>

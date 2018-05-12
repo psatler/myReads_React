@@ -1,16 +1,38 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import * as BooksAPI from './BooksAPI'
 
 
 class Book extends Component {
   static propTypes = {
-    aBook: PropTypes.object.isRequired
+    aBook: PropTypes.object.isRequired,
+    booksOnShelvesFunc: PropTypes.func.isRequired,
+  }
+
+  state = {
+    status: this.props.aBook.shelf ? this.props.aBook.shelf : 'none'
+  }
+
+
+  updateStatus = (book, shelf) => {
+    console.log('Event Update Status', shelf)
+    BooksAPI.update(book, shelf).then( (res) => {
+        this.setState({ status: shelf })
+        this.props.booksOnShelvesFunc();
+
+        console.log('Response from Update ', res)
+    })
+    // BooksAPI.update(book, shelf);
+    // this.setState({ status: shelf })
+
+    console.log("auiq", this.props.booksOnShelvesFunc)
   }
 
 
   showBook = () => {
     const b = this.props.aBook //a single book
     // console.log('TYPE OF',typeof b)
+    // this.setState({ status: b.shelf })
 
     const bookImage = b.imageLinks ? b.imageLinks.thumbnail : ''
     // console.log('imageLinks',b.imageLinks)
@@ -23,7 +45,10 @@ class Book extends Component {
                   style={{ width: 128, height: 193, backgroundImage:`url(${bookImage})` }}>
                 </div>
                 <div className="book-shelf-changer">
-                  <select>
+                  <select
+                    onChange={(event) => this.updateStatus(b, event.target.value)}
+                    value={this.state.status}
+                    >
                     <option value="none" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>

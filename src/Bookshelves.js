@@ -6,11 +6,14 @@ import Book from './Book'
 class Bookshelves extends Component {
 
   static propTypes = {
-    listOfBooksOnShelves: PropTypes.array.isRequired,
+    // listOfBooksOnShelves: PropTypes.array.isRequired,
     listOfBookWantToRead: PropTypes.array.isRequired,
     listOfBookCurrentlyReading: PropTypes.array.isRequired,
     listOfBookRead: PropTypes.array.isRequired,
+    booksOnShelvesFunc: PropTypes.func.isRequired,
   }
+
+  // const { booksOnShelvesFunc } = this.props;
 
   printCurReadingShelf = () => {
     return (
@@ -19,7 +22,8 @@ class Bookshelves extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.listOfBookCurrentlyReading.map( (b) => (
-              <Book key={b.id} aBook={b} />
+              <Book aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              //<Book key={b.id} aBook={b}  />
             ))}
           </ol>
         </div>
@@ -33,7 +37,8 @@ class Bookshelves extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.listOfBookWantToRead.map( (b) => (
-              <Book key={b.id} aBook={b} />
+              <Book aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              //<Book key={b.id} aBook={b}  />
             ))}
           </ol>
         </div>
@@ -47,7 +52,8 @@ class Bookshelves extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {this.props.listOfBookRead.map( (b) => (
-              <Book key={b.id} aBook={b} />
+              <Book aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              // <Book key={b.id} aBook={b}  />
             ))}
           </ol>
         </div>

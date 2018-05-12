@@ -6,6 +6,7 @@ import Bookshelves from './Bookshelves'
 import './App.css'
 
 class BooksApp extends React.Component {
+
   state = {
     books: [],
     wantToRead: [],
@@ -14,6 +15,12 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount(){
+    this.booksOnShelves()
+  }
+
+
+
+  booksOnShelves = () => {
     BooksAPI.getAll().then((books) => { //getting books list on shelves from server
       books.map( (book) => {
           if(book.shelf === "currentlyReading"){
@@ -28,9 +35,8 @@ class BooksApp extends React.Component {
       })
       this.setState({ books:books })
     })
-
-
   }
+
 
   render() {
     console.log('Books', this.state.books);
@@ -42,17 +48,19 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route path="/search" render={() => (
           <SearchBook
-            listOfBooksOnShelves={this.state.books}
+            // listOfBooksOnShelves={this.state.books}
+            booksOnShelvesFunc={this.booksOnShelves}
 
           />
         )}/>
 
         <Route exact path="/" render={() => (
           <Bookshelves
-            listOfBooksOnShelves={this.state.books}
+            // listOfBooksOnShelves={this.state.books}
             listOfBookWantToRead={this.state.wantToRead}
             listOfBookCurrentlyReading={this.state.currentlyReading}
             listOfBookRead={this.state.read}
+            booksOnShelvesFunc={this.booksOnShelves}
           />
         )}/>
 
