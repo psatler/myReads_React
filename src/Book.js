@@ -18,14 +18,14 @@ class Book extends Component {
     console.log('Event Update Status', shelf)
     BooksAPI.update(book, shelf).then( (res) => {
         this.setState({ status: shelf })
-        this.props.booksOnShelvesFunc();
+        this.props.booksOnShelvesFunc(); //calling a function from the App.js file
 
-        console.log('Response from Update ', res)
+        console.log('Response from Update in Book.js ', res)
     })
     // BooksAPI.update(book, shelf);
     // this.setState({ status: shelf })
 
-    console.log("auiq", this.props.booksOnShelvesFunc)
+    // console.log("auiq", this.props.booksOnShelvesFunc)
   }
 
 

@@ -8,7 +8,7 @@ import Book from './Book'
 
 class SearchBook extends Component {
   static propTypes = {
-    // listOfBooksOnShelves: PropTypes.array.isRequired,
+    listOfBooksOnShelves: PropTypes.array.isRequired,
     booksOnShelvesFunc: PropTypes.func.isRequired,
   }
 
@@ -23,20 +23,15 @@ class SearchBook extends Component {
     this.searchBook(query)
   }
 
-  searchBook = (bookName) => {
-    BooksAPI.search(bookName)
+  searchBook = (query) => {
+    BooksAPI.search(query)
       .then( (book) => {
-        console.log('BOOK', book)
-        console.log('bookName', bookName)
+        // console.log('BOOK', book)
+        // console.log('bookName', query)
         if(typeof book === 'undefined' || book.error){
           throw 'Undefined or Error'
         }
-
         this.setState({ booksDisplayed: book })
-        // this.props.booksOnShelvesFunc();
-        // if(book.error || book.length === 0 ){
-        //   this.setState( { booksDisplayed: [] })
-        // }
 
       })
       .catch( (e) => {
@@ -47,24 +42,28 @@ class SearchBook extends Component {
   };
 
 
-
   render() {
-    // console.log('Props', this.props)
-
     //destructing
     const {searchQuery, booksDisplayed} = this.state;
     const {listOfBooksOnShelves} = this.props;
 
-    //filtering the list of books
-    // let filteredList;
-    // if(searchQuery){
-    //   const match = new RegExp(escapeRegExp(searchQuery),'i')
-    //   filteredList = listOfBooksOnShelves.filter((book) => match.test(book.title))
-    // }
-    // console.log('filteredList', filteredList)
-    console.log('booksDisplayed', booksDisplayed)
+    //filtering the list of books already on shelves
+    let onShelves;
+    let notOnShelves;
+    let finalArrayDisplayed = [];
+    if(searchQuery){
+      const match = new RegExp(escapeRegExp(searchQuery),'i')
+      onShelves = listOfBooksOnShelves.filter((book) => match.test(book.title))
 
+      //filtering those books shown on the search page that are not on shelves yet
+      notOnShelves  = booksDisplayed.filter(function(array_el){
+         return onShelves.filter(function(anotherOne_el){
+            return anotherOne_el.id === array_el.id;
+         }).length === 0
+      });
 
+      finalArrayDisplayed = [...onShelves, ...notOnShelves]
+    }
 
     return (
       <div className="search-books">
@@ -90,7 +89,7 @@ class SearchBook extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {booksDisplayed.map( (b) => (
+            {finalArrayDisplayed.map( (b) => (
               <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
             ))}
           </ol>

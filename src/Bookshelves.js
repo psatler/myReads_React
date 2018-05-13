@@ -6,23 +6,24 @@ import Book from './Book'
 class Bookshelves extends Component {
 
   static propTypes = {
-    // listOfBooksOnShelves: PropTypes.array.isRequired,
-    listOfBookWantToRead: PropTypes.array.isRequired,
-    listOfBookCurrentlyReading: PropTypes.array.isRequired,
-    listOfBookRead: PropTypes.array.isRequired,
+    listOfBooksOnShelves: PropTypes.array.isRequired,
+    // listOfBookWantToRead: PropTypes.array.isRequired,
+    // listOfBookCurrentlyReading: PropTypes.array.isRequired,
+    // listOfBookRead: PropTypes.array.isRequired,
     booksOnShelvesFunc: PropTypes.func.isRequired,
   }
 
   // const { booksOnShelvesFunc } = this.props;
 
   printCurReadingShelf = () => {
+    const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading")
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">Currently Reading</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.props.listOfBookCurrentlyReading.map( (b) => (
-              <Book aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+            {currentlyReading.map( (b) => (
+              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
               //<Book key={b.id} aBook={b}  />
             ))}
           </ol>
@@ -31,13 +32,14 @@ class Bookshelves extends Component {
     )
   }
   printWantToReadShelf = () => {
+    const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead")
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">Want to Read</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.props.listOfBookWantToRead.map( (b) => (
-              <Book aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+            {wantToRead.map( (b) => (
+              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
               //<Book key={b.id} aBook={b}  />
             ))}
           </ol>
@@ -46,13 +48,14 @@ class Bookshelves extends Component {
     )
   }
   printReadShelf = () => {
+    const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read")
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">Read</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.props.listOfBookRead.map( (b) => (
-              <Book aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+            {read.map( (b) => (
+              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
               // <Book key={b.id} aBook={b}  />
             ))}
           </ol>
