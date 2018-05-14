@@ -19,25 +19,23 @@ class SearchBook extends Component {
 
   //as the user types, the output is updated
   updateSearchQuery = (query) => {
-    this.setState({ searchQuery: query })
-    this.searchBook(query)
+    this.setState({ searchQuery: query });
+    this.searchBook(query);
   }
 
   searchBook = (query) => {
     BooksAPI.search(query)
       .then( (book) => {
-        // console.log('BOOK', book)
-        // console.log('bookName', query)
-        if(typeof book === 'undefined' || book.error){
-          throw 'Undefined or Error'
-        }
-        this.setState({ booksDisplayed: book })
 
+        if(typeof book === 'undefined' || book.error){
+          console.log('Undefined or error');
+          throw new Error();
+        }
+        this.setState({ booksDisplayed: book });
       })
       .catch( (e) => {
         console.log(e);
-        // console.log("Saida", this.state.booksDisplayed);
-        this.setState( { booksDisplayed: [] })
+        this.setState( { booksDisplayed: [] });
       });
   };
 
@@ -52,21 +50,18 @@ class SearchBook extends Component {
     let notOnShelves;
     let finalArrayDisplayed = [];
     if(searchQuery && searchQuery.trim()){ //using trim to avoid " " being evaluated true
-      const match = new RegExp(escapeRegExp(searchQuery),'i')
-      onShelves = listOfBooksOnShelves.filter((book) => match.test(book.title))
+      const match = new RegExp(escapeRegExp(searchQuery),'i');
+      onShelves = listOfBooksOnShelves.filter((book) => match.test(book.title));
 
       //filtering those books shown on the search page that are not on shelves yet
       notOnShelves  = booksDisplayed.filter(function(array_el){
          return onShelves.filter(function(anotherOne_el){
             return anotherOne_el.id === array_el.id;
-         }).length === 0
+         }).length === 0;
       });
 
-      finalArrayDisplayed = [...onShelves, ...notOnShelves]
-      finalArrayDisplayed.sort(sortBy('title'))
-
-      // console.log('booksDisplayed', booksDisplayed)
-      // console.log('finalArrayDisplayed', finalArrayDisplayed)
+      finalArrayDisplayed = [...onShelves, ...notOnShelves];
+      finalArrayDisplayed.sort(sortBy('title'));
     }
 
     return (
@@ -93,7 +88,6 @@ class SearchBook extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {/* {searchQuery} */}
             {finalArrayDisplayed.map( (b) => (
               <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
             ))}

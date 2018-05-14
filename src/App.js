@@ -9,13 +9,10 @@ class BooksApp extends React.Component {
 
   state = {
     books: [],
-    // wantToRead: [],
-    // currentlyReading: [],
-    // read: []
   }
 
   componentDidMount(){
-    this.booksOnShelves()
+    this.booksOnShelves();
   }
 
 
@@ -33,33 +30,26 @@ class BooksApp extends React.Component {
       //       this.setState( { read: [...this.state.read, book] } )
       //     }
       // })
-      this.setState({ books:books })
+      this.setState({ books:books });
     })
   }
 
 
   render() {
-    console.log('Books', this.state.books);
-    // console.log('currentlyReading', this.state.currentlyReading)
-    // console.log('wantToRead', this.state.wantToRead)
-    // console.log('read', this.state.read)
-
+    // console.log('Books', this.state.books);
+    
     return (
       <div className="app">
         <Route path="/search" render={() => (
           <SearchBook
             listOfBooksOnShelves={this.state.books}
             booksOnShelvesFunc={this.booksOnShelves}
-
           />
         )}/>
 
         <Route exact path="/" render={() => (
           <Bookshelves
             listOfBooksOnShelves={this.state.books}
-            // listOfBookWantToRead={this.state.wantToRead}
-            // listOfBookCurrentlyReading={this.state.currentlyReading}
-            // listOfBookRead={this.state.read}
             booksOnShelvesFunc={this.booksOnShelves}
           />
         )}/>

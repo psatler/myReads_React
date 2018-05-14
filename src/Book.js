@@ -15,27 +15,17 @@ class Book extends Component {
 
 
   updateStatus = (book, shelf) => {
-    console.log('Event Update Status', shelf)
+    // console.log('Event Update Status', shelf);
     BooksAPI.update(book, shelf).then( (res) => {
-        this.setState({ status: shelf })
+        this.setState({ status: shelf });
         this.props.booksOnShelvesFunc(); //calling a function from the App.js file
-
-        console.log('Response from Update in Book.js ', res)
-    })
-    // BooksAPI.update(book, shelf);
-    // this.setState({ status: shelf })
-
-    // console.log("auiq", this.props.booksOnShelvesFunc)
+    });
   }
 
 
   showBook = () => {
-    const b = this.props.aBook //a single book
-    // console.log('TYPE OF',typeof b)
-    // this.setState({ status: b.shelf })
-
-    const bookImage = b.imageLinks ? b.imageLinks.thumbnail : ''
-    // console.log('imageLinks',b.imageLinks)
+    const b = this.props.aBook; //a single book
+    const bookImage = b.imageLinks ? b.imageLinks.thumbnail : '';
 
     return (
           <li key={ b.id }>

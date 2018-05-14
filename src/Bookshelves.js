@@ -7,13 +7,8 @@ class Bookshelves extends Component {
 
   static propTypes = {
     listOfBooksOnShelves: PropTypes.array.isRequired,
-    // listOfBookWantToRead: PropTypes.array.isRequired,
-    // listOfBookCurrentlyReading: PropTypes.array.isRequired,
-    // listOfBookRead: PropTypes.array.isRequired,
     booksOnShelvesFunc: PropTypes.func.isRequired,
   }
-
-  // const { booksOnShelvesFunc } = this.props;
 
   printCurReadingShelf = () => {
     const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading")
@@ -24,13 +19,13 @@ class Bookshelves extends Component {
           <ol className="books-grid">
             {currentlyReading.map( (b) => (
               <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
-              //<Book key={b.id} aBook={b}  />
-            ))}
+              ))}
           </ol>
         </div>
       </div>
     )
-  }
+  };
+
   printWantToReadShelf = () => {
     const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead")
     return (
@@ -40,13 +35,13 @@ class Bookshelves extends Component {
           <ol className="books-grid">
             {wantToRead.map( (b) => (
               <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
-              //<Book key={b.id} aBook={b}  />
-            ))}
+              ))}
           </ol>
         </div>
       </div>
     )
-  }
+  };
+
   printReadShelf = () => {
     const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read")
     return (
@@ -56,14 +51,12 @@ class Bookshelves extends Component {
           <ol className="books-grid">
             {read.map( (b) => (
               <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
-              // <Book key={b.id} aBook={b}  />
-            ))}
+              ))}
           </ol>
         </div>
       </div>
     )
-  }
-
+  };
 
 
   render() {
