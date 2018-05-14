@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
-// import sortBy from 'sort-by'
+import sortBy from 'sort-by'
 
 class SearchBook extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ class SearchBook extends Component {
       })
       .catch( (e) => {
         console.log(e);
-        console.log("Saida", this.state.booksDisplayed);
+        // console.log("Saida", this.state.booksDisplayed);
         this.setState( { booksDisplayed: [] })
       });
   };
@@ -51,7 +51,7 @@ class SearchBook extends Component {
     let onShelves;
     let notOnShelves;
     let finalArrayDisplayed = [];
-    if(searchQuery){
+    if(searchQuery && searchQuery.trim()){ //using trim to avoid " " being evaluated true
       const match = new RegExp(escapeRegExp(searchQuery),'i')
       onShelves = listOfBooksOnShelves.filter((book) => match.test(book.title))
 
@@ -63,6 +63,10 @@ class SearchBook extends Component {
       });
 
       finalArrayDisplayed = [...onShelves, ...notOnShelves]
+      finalArrayDisplayed.sort(sortBy('title'))
+
+      // console.log('booksDisplayed', booksDisplayed)
+      // console.log('finalArrayDisplayed', finalArrayDisplayed)
     }
 
     return (
@@ -89,6 +93,7 @@ class SearchBook extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
+            {/* {searchQuery} */}
             {finalArrayDisplayed.map( (b) => (
               <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
             ))}
