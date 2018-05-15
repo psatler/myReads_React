@@ -19,9 +19,9 @@ export default class MenuExampleStackable extends Component {
         <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
         <Menu.Item name='messages' active={activeItem === 'messages'} onClick={this.handleItemClick} />
         <Menu.Item name='friends' active={activeItem === 'friends'} onClick={this.handleItemClick} />
-        <Menu.Item name='code' className='right' icon='code' active={activeItem === 'code'}
+        <Menu.Item className='right' icon='code' active={activeItem === 'code'}
           onClick={this.handleItemClick}>
-          <Icon name='code' />
+          {/* <Icon name='code' /> */}
         </Menu.Item>
 
       </Menu>

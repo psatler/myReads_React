@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
+import { Card, Image, Rating, Accordion } from 'semantic-ui-react'
 
 
 class Book extends Component {
@@ -14,46 +15,68 @@ class Book extends Component {
   }
 
 
-  updateStatus = (book, shelf) => {
-    // console.log('Event Update Status', shelf);
+  updateStatus = (book, shelf ) => {
+    // console.log('Event Update Status', book, shelf);
     BooksAPI.update(book, shelf).then( (res) => {
         this.setState({ status: shelf });
         this.props.booksOnShelvesFunc(); //calling a function from the App.js file
     });
   }
 
-
   showBook = () => {
     const b = this.props.aBook; //a single book
     const bookImage = b.imageLinks ? b.imageLinks.thumbnail : '';
+    const rating = b.averageRating ? b.averageRating : null;
+    const author = b.authors ? b.authors.join(' ') : '';
+    const panels = [
+      {
+        title: 'Show description',
+        content: b.description
+      },
+    ]
 
     return (
-          <li key={ b.id }>
-            <div className="book">
-              <div className="book-top">
-                <div className="book-cover"
-                  style={{ width: 128, height: 193, backgroundImage:`url(${bookImage})` }}>
-                </div>
-                <div className="book-shelf-changer">
-                  <select
-                    onChange={(event) => this.updateStatus(b, event.target.value)}
-                    value={this.state.status}
-                    >
-                    <option value="none" disabled>Move to...</option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="none1">None</option>
-                  </select>
-                </div>
-              </div>
-              <div className="book-title"> { b.title } </div>
-              <div className="book-authors"> { b.authors} </div>
-            </div>
-          </li>
-      )
-  }
+      <li key={ b.id }>
+        <Card>
+          <Image src={bookImage} />
+          <Card.Content>
+            <Card.Header>
+              { b.title }
+            </Card.Header>
+            <Card.Meta>
+              <span className='date'>
+                { author }
+              </span>
+            </Card.Meta>
+            <Card.Description >
+              <Accordion panels={panels} />
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
 
+            <select
+              onChange={(event) => this.updateStatus(b, event.target.value)}
+              value={this.state.status}
+              style={{border: "none"}}
+              >
+              <option value="none" disabled>Move to...</option>
+              <option value="currentlyReading">Currently Reading</option>
+              <option value="wantToRead">Want to Read</option>
+              <option value="read">Read</option>
+              <option value="none1">None</option>
+            </select>
+
+
+          </Card.Content>
+          <Card.Content >
+            <div > Rating: {/*shows average rating if present in the book object */}
+              <Rating icon='star' defaultRating={rating} maxRating={5} disabled />
+            </div>
+          </Card.Content>
+        </Card>
+      </li>
+    )
+  }
 
   render() {
 
