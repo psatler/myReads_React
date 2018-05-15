@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import SearchBook from './SearchBook'
 import Bookshelves from './Bookshelves'
+import { Container } from 'semantic-ui-react'
 import MenuExampleStackable from './semanticUI/Menu'
 import './App.css'
 
@@ -41,8 +42,9 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
+        <Container>
           <MenuExampleStackable></MenuExampleStackable>
-          
+
           <Route path="/search" render={() => (
             <SearchBook
               listOfBooksOnShelves={this.state.books}
@@ -56,7 +58,7 @@ class BooksApp extends React.Component {
               booksOnShelvesFunc={this.booksOnShelves}
             />
           )}/>
-
+        </Container>
 
       </div>
     )
