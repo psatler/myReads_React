@@ -38,7 +38,7 @@ class BooksApp extends React.Component {
 
 
   render() {
-    // console.log('Books', this.state.books);
+    console.log('Books', this.state.books);
 
     return (
       <div className="app">

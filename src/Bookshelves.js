@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { Divider } from 'semantic-ui-react'
 import Book from './Book'
 
 class Bookshelves extends Component {
@@ -14,7 +15,8 @@ class Bookshelves extends Component {
     const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading")
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">Currently Reading</h2>
+        {/* <h2 className="bookshelf-title">Currently Reading</h2> */}
+        <Divider horizontal><span className="bookshelf-title"> Currently Reading </span> </Divider>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {currentlyReading.map( (b) => (
@@ -30,7 +32,8 @@ class Bookshelves extends Component {
     const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead")
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">Want to Read</h2>
+        {/* <h2 className="bookshelf-title">Want to Read</h2> */}
+        <Divider  horizontal><span className="bookshelf-title"> Want to Read </span></Divider>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {wantToRead.map( (b) => (
@@ -46,7 +49,8 @@ class Bookshelves extends Component {
     const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read")
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">Read</h2>
+        {/* <h2 className="bookshelf-title">Read</h2> */}
+        <Divider horizontal><span className="bookshelf-title"> Read </span></Divider>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {read.map( (b) => (

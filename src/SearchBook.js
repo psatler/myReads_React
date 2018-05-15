@@ -6,6 +6,7 @@ import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 import sortBy from 'sort-by'
 
+
 class SearchBook extends Component {
   static propTypes = {
     listOfBooksOnShelves: PropTypes.array.isRequired,
@@ -86,6 +87,7 @@ class SearchBook extends Component {
 
           </div>
         </div>
+
         <div className="search-books-results">
           <ol className="books-grid">
             {finalArrayDisplayed.map( (b) => (
