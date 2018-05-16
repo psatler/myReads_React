@@ -5,13 +5,9 @@ import '../App.css'
 import logo from '../icons/reactLogo.svg'
 
 export default class MenuExampleStackable extends Component {
-  state = { activeItem: 'home' }
+  state = { activeItem: '' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  goToGitHub = () => {
-    console.log('GITHUB')
-  }
 
   render() {
     const { activeItem } = this.state
