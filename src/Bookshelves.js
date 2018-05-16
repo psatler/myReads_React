@@ -70,7 +70,7 @@ class Bookshelves extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <Header as='h2' icon textAlign='center'>
+          <Header as='h1' icon textAlign='center'>
             <Icon name='book' />
               My Reads
             <Header.Subheader>
