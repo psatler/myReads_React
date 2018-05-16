@@ -13,7 +13,7 @@ body, .app {
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: transparent;
   text-align: center;
 }
 .list-books-title h1 {
@@ -39,7 +39,7 @@ body, .app {
 
 .bookshelf-title {
   /* border-bottom: 1px solid #dedede; */
-  font-size: 1.25em;
+  font-size: 1.75em;
 }
 .bookshelf-books {
   text-align: center;

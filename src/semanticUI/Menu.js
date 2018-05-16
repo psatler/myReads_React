@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import { Menu, Icon } from 'semantic-ui-react'
+import { Menu, Icon, Container } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import '../App.css'
 import logo from '../icons/reactLogo.svg'
 
 export default class MenuExampleStackable extends Component {
-  state = { activeItem: '' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  // state = { activeItem: '' }
+  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state
+    // const { activeItem } = this.state
 
     return (
       <Menu inverted>
@@ -18,15 +17,13 @@ export default class MenuExampleStackable extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </Menu.Item>
         <Link exact to="/">
-          <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item name='home'  />
         </Link>
         <Link to="/search">
-          <Menu.Item name='search'
-            active={activeItem === 'search'} onClick={this.handleItemClick} />
+          <Menu.Item name='search' />
         </Link>
         {/*tried to use Link here as well, though without success */}
-        <Menu.Item className='right' icon='code' active={activeItem === 'code'}
-            onClick={this.goToGitHub} >
+        <Menu.Item className='right' icon='code' >
             <a target="_blank" href="https://github.com/psatler/myReads_React">
               <Icon name='code' />
             </a>

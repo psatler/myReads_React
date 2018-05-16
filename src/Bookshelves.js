@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Divider } from 'semantic-ui-react'
+import { Divider, Header, Icon, Image } from 'semantic-ui-react'
 import Book from './Book'
+
 
 class Bookshelves extends Component {
 
@@ -69,8 +70,13 @@ class Bookshelves extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          {/* <h1>MyReads</h1> */}
+          <Header as='h2' icon textAligh='center'>
+            <Icon name='book' />
+            My Reads
+          </Header>
         </div>
+
         <div className="list-books-content">
           <div>
             {this.printCurReadingShelf()}
