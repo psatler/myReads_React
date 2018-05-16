@@ -70,10 +70,12 @@ class Bookshelves extends Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          {/* <h1>MyReads</h1> */}
           <Header as='h2' icon textAlign='center'>
             <Icon name='book' />
-            My Reads
+              My Reads
+            <Header.Subheader>
+              A Book Lending App
+            </Header.Subheader>
           </Header>
         </div>
 
