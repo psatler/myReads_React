@@ -9,7 +9,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation
 
 To get started developing right away:
-* Clone the project to your local machine using `git clone https://github.com/psatler/myReads_React.git`
+* clone the project to your local machine using `git clone https://github.com/psatler/myReads_React.git`
+* go to the directory where the it was downloaded
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
