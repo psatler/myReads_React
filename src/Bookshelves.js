@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Divider, Header, Icon, Image } from 'semantic-ui-react'
+import { Divider, Header, Icon } from 'semantic-ui-react'
 import Book from './Book'
 
 
@@ -71,7 +71,7 @@ class Bookshelves extends Component {
       <div className="list-books">
         <div className="list-books-title">
           {/* <h1>MyReads</h1> */}
-          <Header as='h2' icon textAligh='center'>
+          <Header as='h2' icon textAlign='center'>
             <Icon name='book' />
             My Reads
           </Header>
