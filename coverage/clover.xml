@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1526579453969" clover="3.2.0">
-  <project timestamp="1526579453969" name="All files">
-    <metrics statements="80" coveredstatements="18" conditionals="22" coveredconditionals="6" methods="44" coveredmethods="2" elements="146" coveredelements="26" complexity="0" loc="80" ncloc="80" packages="2" files="8" classes="8">
+<coverage generated="1526584723919" clover="3.2.0">
+  <project timestamp="1526584723919" name="All files">
+    <metrics statements="81" coveredstatements="19" conditionals="22" coveredconditionals="6" methods="44" coveredmethods="2" elements="147" coveredelements="27" complexity="0" loc="81" ncloc="81" packages="2" files="8" classes="8">
       <package name="src">
-        <metrics statements="79" coveredstatements="18" conditionals="22" coveredconditionals="6" methods="43" coveredmethods="2"/>
+        <metrics statements="80" coveredstatements="19" conditionals="22" coveredconditionals="6" methods="43" coveredmethods="2"/>
         <file name="App.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\App.js">
           <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
           <line num="17" count="0" type="stmt"/>
@@ -100,9 +100,10 @@
           <line num="8" count="0" type="stmt"/>
         </file>
         <file name="setupTests.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\setupTests.js">
-          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="2" type="stmt"/>
-          <line num="5" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
         </file>
       </package>
       <package name="src.semanticUI">
