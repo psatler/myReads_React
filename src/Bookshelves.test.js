@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme'
 import Bookshelves from './Bookshelves'
 import { bookListMock } from './testData/testData'
 import { Divider, Header, Icon } from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+import {Link, MemoryRouter} from 'react-router-dom'
 
 
 const booksOnShelvesFunc = jest.fn();
@@ -19,15 +19,20 @@ describe('[Component] Bookshelves', () => {
       />));
   });
 
-  xit('mounts correctly', () => {
+  //Using MemoryRouter component so it will be possible to Mount Test without
+  //any complains about Link and Context
+  it('mounts correctly', () => {
     expect(mount(
-      <Bookshelves
-        listOfBooksOnShelves={bookList}
-        booksOnShelvesFunc={booksOnShelvesFunc}
-      />));
+      <MemoryRouter>
+        <Bookshelves
+          listOfBooksOnShelves={bookList}
+          booksOnShelvesFunc={booksOnShelvesFunc}
+        />
+      </MemoryRouter>
+      ));
   });
 
-  //search for three classes of type bookshelf 
+  //search for three classes of type bookshelf
   it('should display three shelves', () => {
     const wrapper = shallow(<Bookshelves
       listOfBooksOnShelves={bookList}
@@ -52,10 +57,6 @@ describe('[Component] Bookshelves', () => {
       <Divider horizontal><span className="bookshelf-title"> Read </span></Divider>
     )).toEqual(true);
   });
-
-
-
-
 
 
 });

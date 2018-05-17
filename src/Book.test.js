@@ -61,7 +61,7 @@ describe('[Component] Book', () => {
   //#################
   //testing the select tag so if the user changes the shelf, it will work as intended
   xit('calls updateStatus when select tag has its value changed', () => {
-    // const updateStatus = jest.fn();
+
     const wrapper = mount(
       <Book
         aBook={bookMock[0]} booksOnShelvesFunc={booksOnShelves}
@@ -73,8 +73,8 @@ describe('[Component] Book', () => {
     wrapper.instance().updateStatus(bookMock[0], 'wantToRead'); //from currentlyReading to wantToRead
     expect(wrapper.state('status')).toBe('wantToRead'); //expect new state
 
+    // const updateStatus = jest.fn();
     // wrapper.find('select').simulate('change', { target: { value: 'read' } });
-    // wrapper.find('select').simulate('change');
     // expect(updateStatus).toHaveBeenCalledTimes(1);
   });
 
