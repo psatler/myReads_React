@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1526579453969" clover="3.2.0">
+  <project timestamp="1526579453969" name="All files">
+    <metrics statements="80" coveredstatements="18" conditionals="22" coveredconditionals="6" methods="44" coveredmethods="2" elements="146" coveredelements="26" complexity="0" loc="80" ncloc="80" packages="2" files="8" classes="8">
+      <package name="src">
+        <metrics statements="79" coveredstatements="18" conditionals="22" coveredconditionals="6" methods="43" coveredmethods="2"/>
+        <file name="App.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\App.js">
+          <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+        </file>
+        <file name="Book.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\Book.js">
+          <metrics statements="11" coveredstatements="7" conditionals="8" coveredconditionals="5" methods="5" coveredmethods="2"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="26" count="7" type="stmt"/>
+          <line num="27" count="7" type="cond" truecount="1" falsecount="1"/>
+          <line num="28" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="29" count="7" type="cond" truecount="1" falsecount="1"/>
+          <line num="30" count="7" type="stmt"/>
+          <line num="37" count="7" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="79" count="7" type="stmt"/>
+        </file>
+        <file name="BooksAPI.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\BooksAPI.js">
+          <metrics statements="20" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="11" coveredmethods="0"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="20" count="2" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="35" count="2" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+        </file>
+        <file name="Bookshelves.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\Bookshelves.js">
+          <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+        </file>
+        <file name="SearchBook.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\SearchBook.js">
+          <metrics statements="22" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="32" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+          <line num="53" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+        </file>
+        <file name="index.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\index.js">
+          <metrics statements="7" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="8" count="0" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\setupTests.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="5" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.semanticUI">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <file name="Menu.js" path="C:\Users\Pablo\Documents\UdacityProjects\myReadsReact\src\semanticUI\Menu.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="14" count="0" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
