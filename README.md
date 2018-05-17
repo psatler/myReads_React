@@ -6,6 +6,8 @@ My Reads is an app where you can organize the books you have read, want to read 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+[A live demo of the app can be found here.](https://myreads-psatler.herokuapp.com/)
+
 ## Installation
 
 To get started developing right away:
