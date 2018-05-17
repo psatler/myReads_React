@@ -13,10 +13,9 @@ class Bookshelves extends Component {
   }
 
   printCurReadingShelf = () => {
-    const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading")
+    const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading");
     return (
       <div className="bookshelf">
-        {/* <h2 className="bookshelf-title">Currently Reading</h2> */}
         <Divider horizontal><span className="bookshelf-title"> Currently Reading </span> </Divider>
         <div className="bookshelf-books">
           <ol className="books-grid">
@@ -30,10 +29,9 @@ class Bookshelves extends Component {
   };
 
   printWantToReadShelf = () => {
-    const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead")
+    const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead");
     return (
       <div className="bookshelf">
-        {/* <h2 className="bookshelf-title">Want to Read</h2> */}
         <Divider  horizontal><span className="bookshelf-title"> Want to Read </span></Divider>
         <div className="bookshelf-books">
           <ol className="books-grid">
@@ -47,10 +45,9 @@ class Bookshelves extends Component {
   };
 
   printReadShelf = () => {
-    const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read")
+    const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read");
     return (
       <div className="bookshelf">
-        {/* <h2 className="bookshelf-title">Read</h2> */}
         <Divider horizontal><span className="bookshelf-title"> Read </span></Divider>
         <div className="bookshelf-books">
           <ol className="books-grid">

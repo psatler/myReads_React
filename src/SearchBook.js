@@ -28,8 +28,8 @@ class SearchBook extends Component {
     BooksAPI.search(query)
       .then( (book) => {
 
+        //avoiding {error: "empty query", items: Array(0)} error
         if(typeof book === 'undefined' || book.error){
-          console.log('Undefined or error');
           throw new Error();
         }
         this.setState({ booksDisplayed: book });
@@ -46,10 +46,10 @@ class SearchBook extends Component {
     const {searchQuery, booksDisplayed} = this.state;
     const {listOfBooksOnShelves} = this.props;
 
-    //filtering the list of books already on shelves
     let onShelves;
     let notOnShelves;
     let finalArrayDisplayed = [];
+    //filtering the list of books already on shelves
     if(searchQuery && searchQuery.trim()){ //using trim to avoid " " being evaluated true
       const match = new RegExp(escapeRegExp(searchQuery),'i');
       onShelves = listOfBooksOnShelves.filter((book) => match.test(book.title));
@@ -61,6 +61,7 @@ class SearchBook extends Component {
          }).length === 0;
       });
 
+      //concatenating both list of books already on shelves with those that are not
       finalArrayDisplayed = [...onShelves, ...notOnShelves];
       finalArrayDisplayed.sort(sortBy('title'));
     }
@@ -70,14 +71,6 @@ class SearchBook extends Component {
         <div className="search-books-bar">
           <Link className="close-search" to="/">Close</Link>
           <div className="search-books-input-wrapper">
-            {/*
-              NOTES: The search from BooksAPI is limited to a particular set of search terms.
-              You can find these search terms here:
-              https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-              However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-              you don't find a specific author or title. Every search is limited by search terms.
-            */}
             <input
               type="text"
               placeholder="Search by title or author"

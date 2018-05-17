@@ -16,7 +16,6 @@ class Book extends Component {
 
 
   updateStatus = (book, shelf ) => {
-    // console.log('Event Update Status', book, shelf);
     BooksAPI.update(book, shelf).then( (res) => {
         this.setState({ status: shelf });
         this.props.booksOnShelvesFunc(); //calling a function from the App.js file
@@ -26,9 +25,9 @@ class Book extends Component {
   showBook = () => {
     const b = this.props.aBook; //a single book
     const bookImage = b.imageLinks ? b.imageLinks.thumbnail : '';
-    const rating = b.averageRating ? b.averageRating : null;
+    const rating = b.averageRating ? b.averageRating : null; //if there is no average rating, the stars are not filled
     const author = b.authors ? b.authors.join(' ') : '';
-    const panels = [
+    const panels = [ //this was added so it can display the description of the book
       {
         title: 'Show description',
         content: b.description
@@ -53,7 +52,6 @@ class Book extends Component {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-
             <select
               onChange={(event) => this.updateStatus(b, event.target.value)}
               value={this.state.status}
@@ -65,8 +63,6 @@ class Book extends Component {
               <option value="read">Read</option>
               <option value="none1">None</option>
             </select>
-
-
           </Card.Content>
           <Card.Content >
             <div > Rating: {/*shows average rating if present in the book object */}

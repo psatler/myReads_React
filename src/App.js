@@ -18,31 +18,19 @@ class BooksApp extends React.Component {
   }
 
 
-  //getting books list on shelves from server
+  //getting the list of books on shelves from server
   booksOnShelves = () => {
     BooksAPI.getAll().then((books) => {
-      // books.map( (book) => {
-      //     if(book.shelf === "currentlyReading"){
-      //       this.setState( { currentlyReading: [...this.state.currentlyReading, book] } )
-      //     }
-      //     else if (book.shelf === "wantToRead"){
-      //       this.setState( { wantToRead: [...this.state.wantToRead, book] } )
-      //     }
-      //     else if (book.shelf === "read"){
-      //       this.setState( { read: [...this.state.read, book] } )
-      //     }
-      // })
       this.setState({ books:books });
     })
   }
 
 
   render() {
-    console.log('Books', this.state.books);
 
     return (
       <div className="app">
-        <Container>
+        <Container> 
           <MenuExampleStackable></MenuExampleStackable>
 
           <Route path="/search" render={() => (
