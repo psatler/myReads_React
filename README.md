@@ -15,6 +15,7 @@ To get started developing right away:
 * go to the directory where the it was downloaded
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+* To run tests, you can type `npm test` and to see its coverage, `npm test -- --coverage`
 
 ## Application
 
