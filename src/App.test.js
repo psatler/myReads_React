@@ -48,7 +48,7 @@ describe('[Component] App', () => {
   it("renders search page", () => {
     const wrapper = shallow(
       //simulating we are going the /search page
-      <MemoryRouter initialEntries={[ '/search' ]}>
+      <MemoryRouter initialEntries={['/search']}>
         <App />
       </MemoryRouter>
       );
