@@ -2,8 +2,9 @@ import React from 'react'
 // import ReactDOM from 'react-dom'
 import App from './App'
 import {shallow, mount } from 'enzyme'
-import {Link, MemoryRouter} from 'react-router-dom'
+import {Link, Router, MemoryRouter} from 'react-router-dom'
 import { bookListMock } from './testData/testData'
+import SearchBook from './SearchBook'
 
 /**
  This course is not designed to teach Test Driven Development.
@@ -17,6 +18,8 @@ import { bookListMock } from './testData/testData'
 // })
 
 const bookList = bookListMock;
+const booksOnShelves = jest.fn();
+
 
 describe('[Component] App', () => {
   it('shallow renders correctly', () => {
@@ -36,6 +39,31 @@ describe('[Component] App', () => {
     expect(wrapper.state().books.length).toEqual(0);
   });
 
+  it('renders the app structure', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find('.app').length).toBe(1);
+  });
+
+
+  it("renders search page", () => {
+    const wrapper = shallow(
+      //simulating we are going the /search page
+      <MemoryRouter initialEntries={[ '/search' ]}>
+        <App />
+      </MemoryRouter>
+      );
+    // wrapper.find(<Router />).props('history');
+    // expect(wrapper.find(<SearchBook />)).toHaveLength(1);
+    expect(wrapper.contains(
+      <SearchBook
+        listOfBooksOnShelves={bookList}
+        booksOnShelvesFunc={booksOnShelves}
+      />
+    )).toBe(true);
+
+
+  });
+
   xit('returns the list of books on shelves', () => {
     const wrapper = shallow(<App />);
 
@@ -43,11 +71,6 @@ describe('[Component] App', () => {
     wrapper.instance().booksOnShelves(); //fetch list of books on shelves
     // wrapper.setState({books: bookList});
     expect(wrapper.state().books.length > 0).toBeTruthy();
-  });
-
-  it('renders the app structure', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('.app').length).toBe(1);
   });
 
 });
