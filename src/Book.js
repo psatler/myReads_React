@@ -11,7 +11,7 @@ class Book extends Component {
   }
 
   state = {
-    status: this.props.aBook.shelf ? this.props.aBook.shelf : 'none1'
+    status: this.props.aBook.shelf ? this.props.aBook.shelf : 'none'
   }
 
 
@@ -61,7 +61,7 @@ class Book extends Component {
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
               <option value="read">Read</option>
-              <option value="none1">None</option>
+              <option value="none">None</option>
             </select>
           </Card.Content>
           <Card.Content >
