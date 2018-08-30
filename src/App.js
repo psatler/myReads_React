@@ -38,11 +38,13 @@ class BooksApp extends React.Component {
           ])
         } 
         else { //if the book is not on any shelf yet
+          console.log('livro', book)
           book.shelf = shelf;
-          this.setState([
-            ...this.state.books,
-            book
-          ])
+          const newArray = [ ...this.state.books, book ]
+          this.setState({
+            books: newArray
+          })
+          // console.log('bosta', this.state.books)
         }
     });
   }

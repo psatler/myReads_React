@@ -20,19 +20,19 @@ class SearchBook extends Component {
     booksDisplayed: [],
   }
 
-  updateShelf = (book, shelf ) => {
-    BooksAPI.update(book, shelf) //update shelves on server
-      .then( (res) => { //now update the UI 
-        let bookToBeUpdated = this.state.booksDisplayed.find(b => b.id === book.id)
-        if(bookToBeUpdated){ //if it's a book which is already on shelves
-          bookToBeUpdated.shelf = shelf;
-          this.setState([
-            ...this.state.booksDisplayed,
-            bookToBeUpdated
-          ])
-        } 
-    });
-  }
+  // updateShelf = (book, shelf ) => {
+  //   BooksAPI.update(book, shelf) //update shelves on server
+  //     .then( (res) => { //now update the UI 
+  //       let bookToBeUpdated = this.state.booksDisplayed.find(b => b.id === book.id)
+  //       if(bookToBeUpdated){ //if it's a book which is already on shelves
+  //         bookToBeUpdated.shelf = shelf;
+  //         this.setState([
+  //           ...this.state.booksDisplayed,
+  //           bookToBeUpdated
+  //         ])
+  //       } 
+  //   });
+  // }
 
   //as the user types, the output is updated
   updateSearchQuery = (query) => {
