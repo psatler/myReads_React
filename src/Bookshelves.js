@@ -10,6 +10,7 @@ class Bookshelves extends Component {
   static propTypes = {
     listOfBooksOnShelves: PropTypes.array.isRequired,
     booksOnShelvesFunc: PropTypes.func.isRequired,
+    updateStatusFunc: PropTypes.func.isRequired,
   }
 
   printCurReadingShelf = () => {
@@ -20,7 +21,12 @@ class Bookshelves extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {currentlyReading.map( (b) => (
-              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              <Book 
+                key={b.id} 
+                aBook={b} 
+                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+                updateStatusFunc={this.props.updateStatusFunc} 
+              />
               ))}
           </ol>
         </div>
@@ -36,7 +42,12 @@ class Bookshelves extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {wantToRead.map( (b) => (
-              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              <Book 
+                key={b.id} 
+                aBook={b} 
+                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+                updateStatusFunc={this.props.updateStatusFunc} 
+              />
               ))}
           </ol>
         </div>
@@ -52,7 +63,12 @@ class Bookshelves extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {read.map( (b) => (
-              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              <Book 
+                key={b.id} 
+                aBook={b} 
+                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+                updateStatusFunc={this.props.updateStatusFunc}
+              />
               ))}
           </ol>
         </div>

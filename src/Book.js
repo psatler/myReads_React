@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as BooksAPI from './BooksAPI'
+// import * as BooksAPI from './BooksAPI'
 import { Card, Image, Rating, Accordion } from 'semantic-ui-react'
 
 
@@ -8,22 +8,24 @@ class Book extends Component {
   static propTypes = {
     aBook: PropTypes.object.isRequired,
     booksOnShelvesFunc: PropTypes.func.isRequired,
+    updateStatusFunc: PropTypes.func.isRequired,
   }
 
-  state = {
-    status: this.props.aBook.shelf ? this.props.aBook.shelf : 'none'
-  }
+  // state = {
+  //   status: this.props.aBook.shelf ? this.props.aBook.shelf : 'none'
+  // }
 
-
-  updateStatus = (book, shelf ) => {
-    BooksAPI.update(book, shelf).then( (res) => {
-        this.setState({ status: shelf });
-        this.props.booksOnShelvesFunc(); //calling a function from the App.js file
-    });
-  }
+  // this function was moved to App.js because that file is the one who holds the app state
+  // updateStatus = (book, shelf ) => {
+  //   BooksAPI.update(book, shelf).then( (res) => {
+  //       this.setState({ status: shelf });
+  //       this.props.booksOnShelvesFunc(); //calling a function from the App.js file
+  //   });
+  // }
 
   showBook = () => {
     const b = this.props.aBook; //a single book
+    const status = b.shelf;
     const bookImage = b.imageLinks ? b.imageLinks.thumbnail : '';
     const rating = b.averageRating ? b.averageRating : null; //if there is no average rating, the stars are not filled
     const author = b.authors ? b.authors.join(' ') : '';
@@ -53,8 +55,10 @@ class Book extends Component {
           </Card.Content>
           <Card.Content extra>
             <select
-              onChange={(event) => this.updateStatus(b, event.target.value)}
-              value={this.state.status}
+              // onChange={(event) => this.updateStatus(b, event.target.value)}
+              onChange={(event) => this.props.updateStatusFunc(b, event.target.value)} //this function is defined in App.js
+              // value={this.state.status}
+              value={status}
               style={{border: "none"}}
               >
               <option value="none" disabled>Move to...</option>

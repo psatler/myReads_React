@@ -12,6 +12,7 @@ class SearchBook extends Component {
   static propTypes = {
     listOfBooksOnShelves: PropTypes.array.isRequired,
     booksOnShelvesFunc: PropTypes.func.isRequired,
+    updateStatusFunc: PropTypes.func.isRequired,
   }
 
   state = {
@@ -103,7 +104,12 @@ class SearchBook extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {booksDisplayed.map( (b) => (
-              <Book key={b.id} aBook={b} booksOnShelvesFunc={this.props.booksOnShelvesFunc} />
+              <Book 
+                key={b.id} 
+                aBook={b} 
+                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+                updateStatusFunc={this.props.updateStatusFunc} 
+              />
             ))}
           </ol>
         </div>

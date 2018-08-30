@@ -25,6 +25,19 @@ class BooksApp extends React.Component {
     })
   }
 
+  //it updates the book shelf, switching one book from one shelf to another
+  updateStatus = (book, shelf ) => {
+    BooksAPI.update(book, shelf) //update shelves on server
+      .then( (res) => { //now update the UI 
+        let bookToBeUpdated = this.state.books.find(b => b.id === book.id)
+        bookToBeUpdated.shelf = shelf;
+        this.setState([
+          ...this.state.books,
+          bookToBeUpdated
+        ])
+    });
+  }
+
 
   render() {
 
@@ -37,6 +50,7 @@ class BooksApp extends React.Component {
             <SearchBook
               listOfBooksOnShelves={this.state.books}
               booksOnShelvesFunc={this.booksOnShelves}
+              updateStatusFunc={this.updateStatus}
             />
           )}/>
 
@@ -44,6 +58,7 @@ class BooksApp extends React.Component {
             <Bookshelves
               listOfBooksOnShelves={this.state.books}
               booksOnShelvesFunc={this.booksOnShelves}
+              updateStatusFunc={this.updateStatus}
             />
           )}/>
         </Container>
