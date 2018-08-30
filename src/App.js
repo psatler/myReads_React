@@ -30,11 +30,20 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf) //update shelves on server
       .then( (res) => { //now update the UI 
         let bookToBeUpdated = this.state.books.find(b => b.id === book.id)
-        bookToBeUpdated.shelf = shelf;
-        this.setState([
-          ...this.state.books,
-          bookToBeUpdated
-        ])
+        if(bookToBeUpdated){ //if it's a book which is already on shelves
+          bookToBeUpdated.shelf = shelf;
+          this.setState([
+            ...this.state.books,
+            bookToBeUpdated
+          ])
+        } 
+        else { //if the book is not on any shelf yet
+          book.shelf = shelf;
+          this.setState([
+            ...this.state.books,
+            book
+          ])
+        }
     });
   }
 

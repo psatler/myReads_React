@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Divider, Header, Icon } from 'semantic-ui-react'
-import Book from './Book'
+import { Header, Icon } from 'semantic-ui-react'
+// import Book from './Book'
+import Shelf from './Shelf'
 
 
 class Bookshelves extends Component {
@@ -13,68 +14,68 @@ class Bookshelves extends Component {
     updateStatusFunc: PropTypes.func.isRequired,
   }
 
-  printCurReadingShelf = () => {
-    const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading");
-    return (
-      <div className="bookshelf">
-        <Divider horizontal><span className="bookshelf-title"> Currently Reading </span> </Divider>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
-            {currentlyReading.map( (b) => (
-              <Book 
-                key={b.id} 
-                aBook={b} 
-                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
-                updateStatusFunc={this.props.updateStatusFunc} 
-              />
-              ))}
-          </ol>
-        </div>
-      </div>
-    )
-  };
+  // printCurReadingShelf = () => {
+  //   const currentlyReading = this.props.listOfBooksOnShelves.filter(b => b.shelf === "currentlyReading");
+  //   return (
+  //     <div className="bookshelf">
+  //       <Divider horizontal><span className="bookshelf-title"> Currently Reading </span> </Divider>
+  //       <div className="bookshelf-books">
+  //         <ol className="books-grid">
+  //           {currentlyReading.map( (b) => (
+  //             <Book 
+  //               key={b.id} 
+  //               aBook={b} 
+  //               booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+  //               updateStatusFunc={this.props.updateStatusFunc} 
+  //             />
+  //             ))}
+  //         </ol>
+  //       </div>
+  //     </div>
+  //   )
+  // };
 
-  printWantToReadShelf = () => {
-    const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead");
-    return (
-      <div className="bookshelf">
-        <Divider  horizontal><span className="bookshelf-title"> Want to Read </span></Divider>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
-            {wantToRead.map( (b) => (
-              <Book 
-                key={b.id} 
-                aBook={b} 
-                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
-                updateStatusFunc={this.props.updateStatusFunc} 
-              />
-              ))}
-          </ol>
-        </div>
-      </div>
-    )
-  };
+  // printWantToReadShelf = () => {
+  //   const wantToRead = this.props.listOfBooksOnShelves.filter(b => b.shelf === "wantToRead");
+  //   return (
+  //     <div className="bookshelf">
+  //       <Divider  horizontal><span className="bookshelf-title"> Want to Read </span></Divider>
+  //       <div className="bookshelf-books">
+  //         <ol className="books-grid">
+  //           {wantToRead.map( (b) => (
+  //             <Book 
+  //               key={b.id} 
+  //               aBook={b} 
+  //               booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+  //               updateStatusFunc={this.props.updateStatusFunc} 
+  //             />
+  //             ))}
+  //         </ol>
+  //       </div>
+  //     </div>
+  //   )
+  // };
 
-  printReadShelf = () => {
-    const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read");
-    return (
-      <div className="bookshelf">
-        <Divider horizontal><span className="bookshelf-title"> Read </span></Divider>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
-            {read.map( (b) => (
-              <Book 
-                key={b.id} 
-                aBook={b} 
-                booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
-                updateStatusFunc={this.props.updateStatusFunc}
-              />
-              ))}
-          </ol>
-        </div>
-      </div>
-    )
-  };
+  // printReadShelf = () => {
+  //   const read = this.props.listOfBooksOnShelves.filter(b => b.shelf === "read");
+  //   return (
+  //     <div className="bookshelf">
+  //       <Divider horizontal><span className="bookshelf-title"> Read </span></Divider>
+  //       <div className="bookshelf-books">
+  //         <ol className="books-grid">
+  //           {read.map( (b) => (
+  //             <Book 
+  //               key={b.id} 
+  //               aBook={b} 
+  //               booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+  //               updateStatusFunc={this.props.updateStatusFunc}
+  //             />
+  //             ))}
+  //         </ol>
+  //       </div>
+  //     </div>
+  //   )
+  // };
 
 
   render() {
@@ -94,9 +95,30 @@ class Bookshelves extends Component {
 
         <div className="list-books-content">
           <div>
-            {this.printCurReadingShelf()}
+            <Shelf
+              shelfName={"currentlyReading"}
+              shelfTitle={'Currently Reading'}
+              listOfBooksOnShelves={this.props.listOfBooksOnShelves}
+              booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+              updateStatusFunc={this.props.updateStatusFunc}
+            />
+            <Shelf
+              shelfName={"wantToRead"}
+              shelfTitle={'Want to Read'}
+              listOfBooksOnShelves={this.props.listOfBooksOnShelves}
+              booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+              updateStatusFunc={this.props.updateStatusFunc}
+            />
+            <Shelf
+              shelfName={"read"}
+              shelfTitle={'Read'}
+              listOfBooksOnShelves={this.props.listOfBooksOnShelves}
+              booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+              updateStatusFunc={this.props.updateStatusFunc}
+            />
+            {/* {this.printCurReadingShelf()}
             {this.printWantToReadShelf()}
-            {this.printReadShelf()}
+            {this.printReadShelf()} */}
           </div>
         </div>
 

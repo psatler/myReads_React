@@ -20,10 +20,22 @@ class SearchBook extends Component {
     booksDisplayed: [],
   }
 
+  updateShelf = (book, shelf ) => {
+    BooksAPI.update(book, shelf) //update shelves on server
+      .then( (res) => { //now update the UI 
+        let bookToBeUpdated = this.state.booksDisplayed.find(b => b.id === book.id)
+        if(bookToBeUpdated){ //if it's a book which is already on shelves
+          bookToBeUpdated.shelf = shelf;
+          this.setState([
+            ...this.state.booksDisplayed,
+            bookToBeUpdated
+          ])
+        } 
+    });
+  }
+
   //as the user types, the output is updated
   updateSearchQuery = (query) => {
-    // this.setState({ searchQuery: query });
-    // this.searchBook(query);
     this.setState({ //changing setState to use a callback (as setState is asynchronous), so we get the updated state always
       searchQuery: query,
     }, () => {
@@ -108,6 +120,7 @@ class SearchBook extends Component {
                 key={b.id} 
                 aBook={b} 
                 booksOnShelvesFunc={this.props.booksOnShelvesFunc} 
+                // updateStatusFunc={this.updateShelf} 
                 updateStatusFunc={this.props.updateStatusFunc} 
               />
             ))}
