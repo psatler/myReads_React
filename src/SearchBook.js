@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 // import escapeRegExp from 'escape-string-regexp'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import _ from 'lodash'
 // import sortBy from 'sort-by'
 
 
@@ -29,7 +30,7 @@ class SearchBook extends Component {
     })
   }
 
-  searchBook = (query) => {
+  searchBook = _.debounce( (query) => {
     BooksAPI.search(query.trim())
       .then( (book) => {
 
@@ -55,7 +56,8 @@ class SearchBook extends Component {
         console.log(e);
         this.setState( { booksDisplayed: [] });
       });
-  };
+    }, 
+  300); //waiting 300 ms to trigger search request
 
 
   render() {
