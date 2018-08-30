@@ -20,8 +20,13 @@ class SearchBook extends Component {
 
   //as the user types, the output is updated
   updateSearchQuery = (query) => {
-    this.setState({ searchQuery: query });
-    this.searchBook(query);
+    // this.setState({ searchQuery: query });
+    // this.searchBook(query);
+    this.setState({ //changing setState to use a callback (as setState is asynchronous), so we get the updated state always
+      searchQuery: query,
+    }, () => {
+      this.searchBook(this.state.searchQuery)
+    })
   }
 
   searchBook = (query) => {
